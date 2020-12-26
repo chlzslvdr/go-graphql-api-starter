@@ -1,0 +1,129 @@
+extend type Query {
+  lookups: Lookups
+}
+
+type Lookups @key(fields: "id") {
+  id: ID!
+  availabilities: [Availability]
+  educationLevels: [EducationLevel]
+  employmentTypes: [EmploymentType]
+  genders: [GenderData]
+  impactAreas: [ImpactArea]
+  importances: [Importance]
+  jobClassifications: [JobClassification]
+  jobLevels: [JobLevel]
+  jobStatuses: [JobStatus]
+  jobSubClassifications: [JobSubClassification]
+  jobSubClassificationsBy(jobClassificationId: Int!): [JobSubClassification]
+  payPeriods: [PayPeriod]
+  provinces: [Province]
+  skillsBy(keyword: String!): [Skill]
+  skillLevels: [SkillLevel]
+
+  skillCompetencies: [Skill]
+  skillCompetenciesByKeyword(keyword: String!): [Skill]
+  skillCompetencyLevels: [SkillLevel]
+
+  profileVisibilities: [ProfileVisibility]
+  cvTemplates: [CVTemplate]
+}
+
+scalar DateTime
+scalar Date
+
+type Availability {
+  id: Int
+  availability: String
+  isActive: Boolean
+}
+
+type EducationLevel {
+  level: String
+  id: Int
+  isActive: Boolean
+}
+
+type EmploymentType {
+  type: String
+  id: Int
+  isActive: Boolean
+}
+
+type GenderData {
+  gender: String
+  id: Int
+  isActive: Boolean
+}
+
+type ImpactArea {
+  name: String
+  id: Int
+  isActive: Boolean
+}
+
+type Importance {
+  importance: String
+  id: Int
+  isActive: Boolean
+}
+
+type JobClassification {
+  name: String
+  id: Int
+  isActive: Boolean
+}
+
+type JobLevel {
+  level: String
+  id: Int
+  isActive: Boolean
+}
+type JobStatus {
+  status: String
+  id: Int
+}
+
+type JobSubClassification {
+  name: String
+  id: Int
+  jobClassificationId: Int
+  isActive: Boolean
+}
+
+type PayPeriod {
+  period: String
+  id: Int
+  isActive: Boolean
+}
+
+type Province {
+  id: Int
+  name: String
+  regionId: Int
+  isActive: Boolean
+}
+
+type Skill {
+  name: String
+  id: ID
+  isActive: Boolean
+}
+
+type SkillLevel {
+  level: String
+  id: Int
+  isActive: Boolean
+}
+
+type ProfileVisibility {
+  name: String
+  id: Int
+  isActive: Boolean
+}
+
+type CVTemplate {
+  id: Int
+  name: String
+  url: String
+  isActive: Boolean
+}
